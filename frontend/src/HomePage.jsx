@@ -1,11 +1,8 @@
 import React, { useState } from 'react';
 import Header from './components/Header.jsx';
-import { Heart, Droplets, Users, Clock, Info, CheckCircle, HeartCrack, ClipboardList, Thermometer, Droplet, Phone, Scale, FileText, Activity, ArrowRight, ArrowLeft } from 'lucide-react';
+import { Heart, Droplets, Users, Clock, Info, CheckCircle, Zap, Shield, HeartCrack, ClipboardList, Thermometer, Droplet, Phone, Scale, FileText, Activity, ArrowRight, ArrowLeft } from 'lucide-react';
 
 const HomePage = () => {
-    const [selectedType] = useState("O+");
-    const [activeTab, setActiveTab] = useState("compatibility");
-
     const heroStyles = {
         minHeight: '100vh',
         background: 'linear-gradient(135deg, #fef2f2 0%, #fce7f3 100%)',
@@ -141,188 +138,6 @@ const HomePage = () => {
     };
 
 
-
-
-
-    // 🔹 Blood Group Compatibility Data
-    const bloodData = {
-        "O+": {
-            canDonate: ["O+", "A+", "B+", "AB+"],
-            canReceive: ["O-", "O+"],
-            type: "Common Donor",
-            population: "37.4%",
-            details: {
-                antigens: "None",
-                antibodies: "Anti-A, Anti-B",
-                rh: "Positive",
-                note: "Most common blood type",
-            },
-        },
-        "O-": {
-            canDonate: ["All Blood Types"],
-            canReceive: ["O-"],
-            type: "Universal Donor",
-            population: "6.6%",
-            details: {
-                antigens: "None",
-                antibodies: "Anti-A, Anti-B",
-                rh: "Negative",
-                note: "Universal donor for all blood types",
-            },
-        },
-        "A-": {
-            canDonate: ["A-", "A+", "AB-", "AB+"],
-            canReceive: ["A-", "O-"],
-            type: "Universal Plasma Donor",
-            population: "6.3%",
-            details: {
-                antigens: "A",
-                antibodies: "Anti-B",
-                rh: "Negative",
-                note: "Can donate to A and AB types",
-            },
-        },
-        "A+": {
-            canDonate: ["A+", "AB+"],
-            canReceive: ["A+", "A-", "O+", "O-"],
-            type: "Common Type",
-            population: "32.3%",
-            details: {
-                antigens: "A",
-                antibodies: "Anti-B",
-                rh: "Positive",
-                note: "Second most common blood type",
-            },
-        },
-        "B-": {
-            canDonate: ["B-", "B+", "AB-", "AB+"],
-            canReceive: ["B-", "O-"],
-            type: "Rare Type",
-            population: "1.5%",
-            details: {
-                antigens: "B",
-                antibodies: "Anti-A",
-                rh: "Negative",
-                note: "Can donate to B and AB types",
-            },
-        },
-        "B+": {
-            canDonate: ["B+", "AB+"],
-            canReceive: ["B+", "B-", "O+", "O-"],
-            type: "Common Type",
-            population: "9.4%",
-            details: {
-                antigens: "B",
-                antibodies: "Anti-A",
-                rh: "Positive",
-                note: "Compatible with B and AB positive",
-            },
-        },
-        "AB-": {
-            canDonate: ["AB-", "AB+"],
-            canReceive: ["A-", "B-", "AB-", "O-"],
-            type: "Universal Plasma Recipient",
-            population: "0.6%",
-            details: {
-                antigens: "A and B",
-                antibodies: "None",
-                rh: "Negative",
-                note: "Can receive from any negative blood type",
-            },
-        },
-        "AB+": {
-            canDonate: ["AB+"],
-            canReceive: ["All Blood Types"],
-            type: "Universal Recipient",
-            population: "3.4%",
-            details: {
-                antigens: "A and B",
-                antibodies: "None",
-                rh: "Positive",
-                note: "Can receive blood from any type",
-            },
-        },
-
-        // You can add more blood types (A+, A-, B+, etc.) here
-    };
-    const bloodTypes = [
-        {
-            type: "O−",
-            title: "Universal Donor",
-            population: "6.6% of population",
-            antigens: "None",
-            antibodies: "Anti-A, Anti-B",
-            rhFactor: "Negative",
-            note: "Most needed type, can donate to everyone",
-        },
-        {
-            type: "O+",
-            title: "Common Donor",
-            population: "37.4% of population",
-            antigens: "None",
-            antibodies: "Anti-A, Anti-B",
-            rhFactor: "Positive",
-            note: "Most common blood type",
-        },
-        {
-            type: "A−",
-            title: "Rare Donor",
-            population: "6.3% of population",
-            antigens: "A",
-            antibodies: "Anti-B",
-            rhFactor: "Negative",
-            note: "Can donate to A and AB types",
-        },
-        {
-            type: "A+",
-            title: "Common Donor",
-            population: "35.7% of population",
-            antigens: "A",
-            antibodies: "Anti-B",
-            rhFactor: "Positive",
-            note: "Second most common type",
-        },
-        {
-            type: "B−",
-            title: "Rare Donor",
-            population: "1.5% of population",
-            antigens: "B",
-            antibodies: "Anti-A",
-            rhFactor: "Negative",
-            note: "Rare blood type, high demand",
-        },
-        {
-            type: "B+",
-            title: "Common Donor",
-            population: "8.5% of population",
-            antigens: "B",
-            antibodies: "Anti-A",
-            rhFactor: "Positive",
-            note: "Can donate to B and AB positive",
-        },
-        {
-            type: "AB−",
-            title: "Rare Donor",
-            population: "0.6% of population",
-            antigens: "A, B",
-            antibodies: "None",
-            rhFactor: "Negative",
-            note: "Rarest blood type",
-        },
-        {
-            type: "AB+",
-            title: "Universal Receiver",
-            population: "3.4% of population",
-            antigens: "A, B",
-            antibodies: "None",
-            rhFactor: "Positive",
-            note: "Can receive from all blood types",
-        },
-    ];
-
-    const current = bloodData[selectedType];
-
-
     const cardContainer = {
         display: "grid",
         gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
@@ -372,6 +187,97 @@ const HomePage = () => {
         height: "18px",
         marginRight: "0.5rem",
     };
+    const [activeTab, setActiveTab] = useState("compatibility");
+    const [selectedType, setSelectedType] = useState("O+");
+
+    // All blood group data
+    const bloodData = {
+        "O-": {
+            donateTo: ["O-", "A-", "B-", "AB-"],
+            receiveFrom: ["O-"],
+            population: "6.6%",
+            type: "Universal Donor",
+            antigens: "None",
+            antibodies: "Anti-A, Anti-B",
+            rhFactor: "Negative",
+            note: "Universal donor for all negative blood types",
+        },
+        "O+": {
+            donateTo: ["O+", "A+", "B+", "AB+"],
+            receiveFrom: ["O-", "O+"],
+            population: "37.4%",
+            type: "Common Donor",
+            antigens: "None",
+            antibodies: "Anti-A, Anti-B",
+            rhFactor: "Positive",
+            note: "Most common blood type",
+        },
+        "A-": {
+            donateTo: ["A-", "A+", "AB-", "AB+"],
+            receiveFrom: ["A-", "O-"],
+            population: "6.3%",
+            type: "Type A Negative",
+            antigens: "A",
+            antibodies: "Anti-B",
+            rhFactor: "Negative",
+            note: "Can donate to all A and AB types",
+        },
+        "A+": {
+            donateTo: ["A+", "AB+"],
+            receiveFrom: ["A-", "A+", "O-", "O+"],
+            population: "32.3%",
+            type: "Type A Positive",
+            antigens: "A",
+            antibodies: "Anti-B",
+            rhFactor: "Positive",
+            note: "Second most common blood type",
+        },
+        "B-": {
+            donateTo: ["B-", "B+", "AB-", "AB+"],
+            receiveFrom: ["B-", "O-"],
+            population: "1.5%",
+            type: "Type B Negative",
+            antigens: "B",
+            antibodies: "Anti-A",
+            rhFactor: "Negative",
+            note: "Can donate to all B and AB types",
+        },
+        "B+": {
+            donateTo: ["B+", "AB+"],
+            receiveFrom: ["B-", "B+", "O-", "O+"],
+            population: "10%",
+            type: "Type B Positive",
+            antigens: "B",
+            antibodies: "Anti-A",
+            rhFactor: "Positive",
+            note: "Common in certain regions",
+        },
+        "AB-": {
+            donateTo: ["AB-", "AB+"],
+            receiveFrom: ["A-", "B-", "AB-", "O-"],
+            population: "0.6%",
+            type: "Type AB Negative",
+            antigens: "A, B",
+            antibodies: "None",
+            rhFactor: "Negative",
+            note: "Universal plasma donor",
+        },
+        "AB+": {
+            donateTo: ["AB+"],
+            receiveFrom: ["Everyone"],
+            population: "3.4%",
+            type: "Universal Receiver",
+            antigens: "A, B",
+            antibodies: "None",
+            rhFactor: "Positive",
+            note: "Can receive all blood types",
+        },
+    };
+
+    //  const [activeTab, setActiveTab] = useState("compatibility");
+    //   const [selectedType, setSelectedType] = useState("O+");
+
+    const blood = bloodData[selectedType];
     return (
         <div>
             <Header />
@@ -589,265 +495,505 @@ const HomePage = () => {
                         </div>
                     </div>
                 </section>
+            </div >
+            <section
+                style={{
+                    padding: "60px 20px",
+                    backgroundColor: "#f9fafb",
+                    textAlign: "center",
+                    fontFamily: "Poppins, sans-serif",
+                }}
+            >
+                <h2 style={headingStyle}>
+                    Complete Blood Type Guide
+                </h2>
+                <p style={textStyle}>
+                    Detailed information about blood types, compatibility, and characteristics
+                </p>
 
-                {/* Blood Group Compatibility */}
-                <section
+                {/* Tabs */}
+                <div
                     style={{
-                        padding: "60px 20px",
-                        backgroundColor: "#f9fafb",
-                        textAlign: "center",
+                        display: "flex",
+                        justifyContent: "center",
+                        background: "#fff",
+                        borderRadius: "12px 12px 0 0",
+                        boxShadow: "0 2px 4px rgba(0,0,0,0.1)",
+                        overflow: "hidden",
+                        width: "80%",
+                        margin: "0 auto",
                     }}
                 >
-                    <h2 style={headingStyle}>
-                        Complete Blood Type Guide
-                    </h2>
-                    <p style={textStyle}>
-                        Detailed information about blood types, compatibility, and characteristics
-                    </p>
-
-                    {/* Tabs */}
-                    <div
+                    <button
+                        onClick={() => setActiveTab("compatibility")}
                         style={{
-                            backgroundColor: "#fff",
-                            borderRadius: "10px",
-                            marginTop: "40px",
-                            padding: "20px",
-                            boxShadow: "0 2px 10px rgba(0,0,0,0.1)",
-                            maxWidth: "1000px",
-                            marginInline: "auto",
+                            flex: 1,
+                            padding: "12px 0",
+                            border: "none",
+                            backgroundColor: activeTab === "compatibility" ? "#dc2626" : "#fff",
+                            color: activeTab === "compatibility" ? "#fff" : "#374151",
+                            fontWeight: "600",
+                            cursor: "pointer",
                         }}
                     >
-                        <div
-                            style={{
-                                display: "flex",
-                                justifyContent: "center",
-                                borderBottom: "1px solid #e5e7eb",
-                            }}
-                        >
-                            <button
-                                onClick={() => setActiveTab("compatibility")}
-                                style={{
-                                    padding: "10px 20px",
-                                    border: "none",
-                                    borderBottom:
-                                        activeTab === "compatibility" ? "3px solid #dc2626" : "none",
-                                    color: activeTab === "compatibility" ? "#dc2626" : "#374151",
-                                    background: "transparent",
-                                    fontWeight: 600,
-                                    cursor: "pointer",
-                                }}
-                            >
-                                Blood Compatibility
-                            </button>
-                            <button
-                                onClick={() => setActiveTab("details")}
-                                style={{
-                                    padding: "10px 20px",
-                                    border: "none",
-                                    borderBottom:
-                                        activeTab === "details" ? "3px solid #dc2626" : "none",
-                                    color: activeTab === "details" ? "#dc2626" : "#374151",
-                                    background: "transparent",
-                                    fontWeight: 600,
-                                    cursor: "pointer",
-                                }}
-                            >
-                                Blood Type Details
-                            </button>
-                        </div>
+                        Blood Compatibility
+                    </button>
+                    <button
+                        onClick={() => setActiveTab("details")}
+                        style={{
+                            flex: 1,
+                            padding: "12px 0",
+                            border: "none",
+                            backgroundColor: activeTab === "details" ? "#dc2626" : "#fff",
+                            color: activeTab === "details" ? "#fff" : "#374151",
+                            fontWeight: "600",
+                            cursor: "pointer",
+                        }}
+                    >
+                        Blood Type Details
+                    </button>
+                </div>
 
-                        {/* Blood Type Details Section */}
-                        {activeTab === "details" && (
-                            <div
-                                style={{
-                                    width: "100%",
-                                    display: "grid",
-                                    gridTemplateColumns: "repeat(4, 1fr)", // 👈 exactly 4 columns
-                                    gap: "1.5rem",
-                                    marginTop: "1.5rem",
-                                }}
-                            >
-                                {bloodTypes.map((blood, index) => (
-                                    <div
-                                        key={index}
-                                        style={{
-                                            backgroundColor: "#fff",
-                                            border: "1px solid #e5e7eb",
-                                            borderRadius: "12px",
-                                            padding: "1rem",
-                                            textAlign: "left",
-                                            boxShadow: "0 2px 6px rgba(0,0,0,0.08)",
-                                            transition: "all 0.3s ease",
-                                        }}
-                                    >
-                                        <div style={{ textAlign: "center", marginBottom: "1rem" }}>
-                                            <div
-                                                style={{
-                                                    fontSize: "1.8rem",
-                                                    fontWeight: "bold",
-                                                    color: "#dc2626",
-                                                }}
-                                            >
-                                                {blood.type}
-                                            </div>
-                                            <div style={{ fontWeight: "600", marginTop: "0.25rem" }}>
-                                                {blood.title}
-                                            </div>
-                                            <div style={{ color: "#555", fontSize: "0.9rem" }}>
-                                                {blood.population}
-                                            </div>
-                                        </div>
-
-                                        <div style={{ fontSize: "0.95rem", color: "#333" }}>
-                                            <p>
-                                                <strong>Antigens:</strong> {blood.antigens}
-                                            </p>
-                                            <p>
-                                                <strong>Antibodies:</strong> {blood.antibodies}
-                                            </p>
-                                            <p>
-                                                <strong>Rh Factor:</strong> {blood.rhFactor}
-                                            </p>
-                                            <p
-                                                style={{
-                                                    marginTop: "0.5rem",
-                                                    fontSize: "0.85rem",
-                                                    color: "#6b7280",
-                                                }}
-                                            >
-                                                {blood.note}
-                                            </p>
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
-                        )}
-
-                        {/* Compatibility Section */}
-                        {activeTab === "compatibility" && (
+                {/* Content */}
+                <div
+                    style={{
+                        background: "#fff",
+                        borderRadius: " 12px 12px",
+                        width: "80%",
+                        margin: "0 auto",
+                        padding: "30px",
+                        boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
+                    }}
+                >
+                    {activeTab === "compatibility" ? (
+                        <>
+                            {/* Blood Type Buttons */}
                             <div
                                 style={{
                                     display: "flex",
-                                    justifyContent: "space-around",
+                                    justifyContent: "center",
+                                    gap: "12px",
+                                    marginBottom: "30px",
                                     flexWrap: "wrap",
-                                    gap: "20px",
-                                    marginTop: "30px",
                                 }}
                             >
-                                {/* Can Donate */}
+                                {Object.keys(bloodData).map((bt) => (
+                                    <button
+                                        key={bt}
+                                        onClick={() => setSelectedType(bt)}
+                                        style={{
+                                            backgroundColor: selectedType === bt ? "#dc2626" : "#f3f4f6",
+                                            color: selectedType === bt ? "#fff" : "#111827",
+                                            border: "none",
+                                            padding: "8px 16px",
+                                            borderRadius: "8px",
+                                            cursor: "pointer",
+                                            fontWeight: "600",
+                                        }}
+                                    >
+                                        {bt}
+                                    </button>
+                                ))}
+                            </div>
+
+                            {/* Information Boxes */}
+                            <div
+                                style={{
+                                    display: "grid",
+                                    gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
+                                    gap: "20px",
+                                }}
+                            >
+                                {/* Donate Box */}
                                 <div
                                     style={{
                                         backgroundColor: "#ecfdf5",
-                                        borderRadius: "10px",
+                                        borderRadius: "12px",
                                         padding: "20px",
-                                        flex: "1",
-                                        minWidth: "250px",
                                         textAlign: "left",
                                     }}
                                 >
-                                    <p style={{ fontWeight: 600, color: "#047857" }}>
-                                        <ArrowRight
-                                            size={18}
-                                            style={{ display: "inline", marginRight: "8px" }}
-                                        />
-                                        Can Donate To:
-                                    </p>
-                                    <div style={{ marginTop: "8px" }}>
-                                        {current.canDonate.map((type) => (
+                                    <h3
+                                        style={{
+                                            color: "#065f46",
+                                            fontSize: "18px",
+                                            fontWeight: "600",
+                                            marginBottom: "12px",
+                                        }}
+                                    >
+                                        <ArrowRight /> Can Donate To:
+                                    </h3>
+                                    <div
+                                        style={{
+                                            display: "flex",
+                                            gap: "10px",
+                                            flexWrap: "wrap",
+                                            marginBottom: "12px",
+                                        }}
+                                    >
+                                        {blood.donateTo.map((type) => (
                                             <span
                                                 key={type}
                                                 style={{
                                                     backgroundColor: "#d1fae5",
                                                     color: "#065f46",
                                                     padding: "5px 10px",
-                                                    borderRadius: "6px",
-                                                    margin: "4px",
-                                                    display: "inline-block",
+                                                    borderRadius: "20px",
+                                                    fontSize: "14px",
                                                 }}
                                             >
                                                 {type}
                                             </span>
                                         ))}
                                     </div>
-                                    <p style={{ marginTop: "10px", color: "#065f46" }}>
-                                        Type: <strong>{current.type}</strong>
+                                    <p>
+                                        <strong>Type:</strong> {blood.type}
                                     </p>
                                 </div>
 
-                                {/* Can Receive */}
+                                {/* Receive Box */}
                                 <div
                                     style={{
                                         backgroundColor: "#eff6ff",
-                                        borderRadius: "10px",
+                                        borderRadius: "12px",
                                         padding: "20px",
-                                        flex: "1",
-                                        minWidth: "250px",
                                         textAlign: "left",
                                     }}
                                 >
-                                    <p style={{ fontWeight: 600, color: "#1d4ed8" }}>
-                                        <ArrowLeft
-                                            size={18}
-                                            style={{ display: "inline", marginRight: "8px" }}
-                                        />
-                                        Can Receive From:
-                                    </p>
-                                    <div style={{ marginTop: "8px" }}>
-                                        {current.canReceive.map((type) => (
+                                    <h3
+                                        style={{
+                                            color: "#1e3a8a",
+                                            fontSize: "18px",
+                                            fontWeight: "600",
+                                            marginBottom: "12px",
+                                        }}
+                                    >
+                                        <ArrowLeft /> Can Receive From:
+                                    </h3>
+                                    <div
+                                        style={{
+                                            display: "flex",
+                                            gap: "10px",
+                                            flexWrap: "wrap",
+                                            marginBottom: "12px",
+                                        }}
+                                    >
+                                        {blood.receiveFrom.map((type) => (
                                             <span
                                                 key={type}
                                                 style={{
                                                     backgroundColor: "#dbeafe",
-                                                    color: "#1e40af",
+                                                    color: "#1e3a8a",
                                                     padding: "5px 10px",
-                                                    borderRadius: "6px",
-                                                    margin: "4px",
-                                                    display: "inline-block",
+                                                    borderRadius: "20px",
+                                                    fontSize: "14px",
                                                 }}
                                             >
                                                 {type}
                                             </span>
                                         ))}
                                     </div>
-                                    <p style={{ marginTop: "10px", color: "#1e3a8a" }}>
-                                        Population: {current.population}
+                                    <p>
+                                        <strong>Population:</strong> {blood.population}
                                     </p>
                                 </div>
 
-                                {/* Blood Details */}
+                                {/* Details Box */}
                                 <div
                                     style={{
                                         backgroundColor: "#f5f3ff",
-                                        borderRadius: "10px",
+                                        borderRadius: "12px",
                                         padding: "20px",
-                                        flex: "1",
-                                        minWidth: "250px",
                                         textAlign: "left",
                                     }}
                                 >
-                                    <p style={{ fontWeight: 600, color: "#7e22ce" }}>
-                                        <Info
-                                            size={18}
-                                            style={{ display: "inline", marginRight: "8px" }}
-                                        />
-                                        Blood Details:
+                                    <h3
+                                        style={{
+                                            color: "#6d28d9",
+                                            fontSize: "18px",
+                                            fontWeight: "600",
+                                            marginBottom: "12px",
+                                        }}
+                                    >
+                                        🩸 Blood Details:
+                                    </h3>
+                                    <p>
+                                        <strong>Antigens:</strong> {blood.antigens}
                                     </p>
-                                    <p style={{ color: "#6b21a8", marginTop: "8px" }}>
-                                        <strong>Antigens:</strong> {current.details.antigens}
-                                        <br />
-                                        <strong>Antibodies:</strong> {current.details.antibodies}
-                                        <br />
-                                        <strong>Rh Factor:</strong> {current.details.rh}
-                                        <br />
-                                        {current.details.note}
+                                    <p>
+                                        <strong>Antibodies:</strong> {blood.antibodies}
                                     </p>
+                                    <p>
+                                        <strong>Rh Factor:</strong> {blood.rhFactor}
+                                    </p>
+                                    <p style={{ color: "#6d28d9", marginTop: "8px" }}>{blood.note}</p>
                                 </div>
                             </div>
-                        )}
+                        </>
+                    ) : (
+                        <div
+                            style={{
+                                display: "grid",
+                                gridTemplateColumns: "repeat(4, 1fr)", // ✅ 4 buttons per row
+                                gap: "12px",
+                                justifyContent: "center",
+                                alignItems: "center",
+                                marginBottom: "30px",
+                                width: "fit-content",
+                                marginInline: "auto",
+                            }}
+                        >
+                            {Object.entries(bloodData).map(([type, details]) => (
+                                <div
+                                    key={type}
+                                    style={{
+                                        background: "#fff",
+                                        borderRadius: "12px",
+                                        padding: "25px",
+                                        textAlign: "center",
+                                        boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
+                                        border:
+                                            selectedType === type
+                                                ? "2px solid #dc2626"
+                                                : "1px solid #f3f4f6",
+                                    }}
+                                    onClick={() => setSelectedType(type)}
+                                >
+                                    <div
+                                        style={{
+                                            backgroundColor: "#fee2e2",
+                                            width: "60px",
+                                            height: "60px",
+                                            borderRadius: "50%",
+                                            display: "flex",
+                                            alignItems: "center",
+                                            justifyContent: "center",
+                                            margin: "0 auto 10px",
+                                        }}
+                                    >
+                                        <span
+                                            style={{
+                                                fontSize: "20px",
+                                                color: "#dc2626",
+                                                fontWeight: "bold",
+                                            }}
+                                        >
+                                            {type}
+                                        </span>
+                                    </div>
+                                    <h3 style={{ marginBottom: "5px", fontWeight: "600" }}>
+                                        {details.type}
+                                    </h3>
+                                    <p style={{ color: "#666", fontSize: "14px", marginBottom: "10px" }}>
+                                        {details.population} of population
+                                    </p>
+                                    <p><strong>Antigens:</strong> {details.antigens}</p>
+                                    <p><strong>Antibodies:</strong> {details.antibodies}</p>
+                                    <p><strong>Rh Factor:</strong> {details.rhFactor}</p>
+                                    <p
+                                        style={{
+                                            fontStyle: "italic",
+                                            color: "#777",
+                                            fontSize: "13px",
+                                            marginTop: "5px",
+                                        }}
+                                    >
+                                        {details.note}
+                                    </p>
+                                </div>
+                            ))}
+                        </div>
+                    )}
+                </div>
+            </section>
+            <section
+                style={{
+                    padding: "60px 20px",
+                    backgroundColor: "#f9fafb",
+                    textAlign: "center",
+                    fontFamily: "Poppins, sans-serif",
+                }}
+            >
+                <h2 style={headingStyle}>
+                    Blood Components & Uses
+                </h2>
+                <p style={textStyle}>
+                    Your single donation can be separated into multiple life-saving components
+                </p>
+
+                <div
+                    style={{
+                        display: "grid",
+                        gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+                        gap: "30px",
+                        justifyContent: "center",
+                        width: "90%",
+                        margin: "0 auto",
+                    }}
+                >
+                    {/* Red Blood Cells */}
+                    <div
+                        style={{
+                            background: "#fff",
+                            borderRadius: "16px",
+                            padding: "30px",
+                            boxShadow: "0 4px 8px rgba(0,0,0,0.08)",
+                            textAlign: "center",
+                        }}
+                    >
+                        <div
+                            style={{
+                                backgroundColor: "#fee2e2",
+                                color: "#dc2626",
+                                width: "60px",
+                                height: "60px",
+                                borderRadius: "50%",
+                                display: "flex",
+                                alignItems: "center",
+                                justifyContent: "center",
+                                fontSize: "26px",
+                                margin: "0 auto 16px",
+                            }}
+                        >
+                            <Droplet size={30} />
+                        </div>
+                        <h3 style={{ fontSize: "20px", fontWeight: "600" }}>Red Blood Cells</h3>
+                        <p style={{ color: "#6b7280", marginBottom: "10px" }}>
+                            Carry oxygen throughout the body
+                        </p>
+                        <span
+                            style={{
+                                backgroundColor: "#fee2e2",
+                                color: "#b91c1c",
+                                padding: "4px 12px",
+                                borderRadius: "12px",
+                                fontSize: "14px",
+                                display: "inline-block",
+                                marginBottom: "16px",
+                            }}
+                        >
+                            Storage: 42 days
+                        </span>
+                        <div style={{ textAlign: "left" }}>
+                            <p style={{ fontWeight: "600", marginBottom: "8px" }}>Used for:</p>
+                            <ul style={{ color: "#059669", listStyle: "none", padding: 0 }}>
+                                <li>✔ Trauma patients</li>
+                                <li>✔ Surgery patients</li>
+                                <li>✔ Cancer treatment</li>
+                                <li>✔ Chronic anemia</li>
+                            </ul>
+                        </div>
                     </div>
-                </section>
-            </div >
-            )
+
+                    {/* Platelets */}
+                    <div
+                        style={{
+                            background: "#fff",
+                            borderRadius: "16px",
+                            padding: "30px",
+                            boxShadow: "0 4px 8px rgba(0,0,0,0.08)",
+                            textAlign: "center",
+                        }}
+                    >
+                        <div
+                            style={{
+                                backgroundColor: "#fef3c7",
+                                color: "#b45309",
+                                width: "60px",
+                                height: "60px",
+                                borderRadius: "50%",
+                                display: "flex",
+                                alignItems: "center",
+                                justifyContent: "center",
+                                fontSize: "26px",
+                                margin: "0 auto 16px",
+                            }}
+                        >
+                            <Zap size={30} />
+                        </div>
+                        <h3 style={{ fontSize: "20px", fontWeight: "600" }}>Platelets</h3>
+                        <p style={{ color: "#6b7280", marginBottom: "10px" }}>
+                            Help blood clot and stop bleeding
+                        </p>
+                        <span
+                            style={{
+                                backgroundColor: "#fef3c7",
+                                color: "#b45309",
+                                padding: "4px 12px",
+                                borderRadius: "12px",
+                                fontSize: "14px",
+                                display: "inline-block",
+                                marginBottom: "16px",
+                            }}
+                        >
+                            Storage: 5 days
+                        </span>
+                        <div style={{ textAlign: "left" }}>
+                            <p style={{ fontWeight: "600", marginBottom: "8px" }}>Used for:</p>
+                            <ul style={{ color: "#059669", listStyle: "none", padding: 0 }}>
+                                <li>✔ Cancer patients</li>
+                                <li>✔ Organ transplants</li>
+                                <li>✔ Heart surgery</li>
+                                <li>✔ Bleeding disorders</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    {/* Plasma */}
+                    <div
+                        style={{
+                            background: "#fff",
+                            borderRadius: "16px",
+                            padding: "30px",
+                            boxShadow: "0 4px 8px rgba(0,0,0,0.08)",
+                            textAlign: "center",
+                        }}
+                    >
+                        <div
+                            style={{
+                                backgroundColor: "#e0e7ff",
+                                color: "#3730a3",
+                                width: "60px",
+                                height: "60px",
+                                borderRadius: "50%",
+                                display: "flex",
+                                alignItems: "center",
+                                justifyContent: "center",
+                                fontSize: "26px",
+                                margin: "0 auto 16px",
+                            }}
+                        >
+                            <Shield size={30} />
+                        </div>
+                        <h3 style={{ fontSize: "20px", fontWeight: "600" }}>Plasma</h3>
+                        <p style={{ color: "#6b7280", marginBottom: "10px" }}>
+                            Contains proteins and antibodies
+                        </p>
+                        <span
+                            style={{
+                                backgroundColor: "#e0e7ff",
+                                color: "#3730a3",
+                                padding: "4px 12px",
+                                borderRadius: "12px",
+                                fontSize: "14px",
+                                display: "inline-block",
+                                marginBottom: "16px",
+                            }}
+                        >
+                            Storage: 1 year frozen
+                        </span>
+                        <div style={{ textAlign: "left" }}>
+                            <p style={{ fontWeight: "600", marginBottom: "8px" }}>Used for:</p>
+                            <ul style={{ color: "#059669", listStyle: "none", padding: 0 }}>
+                                <li>✔ Burn victims</li>
+                                <li>✔ Shock patients</li>
+                                <li>✔ Immune disorders</li>
+                                <li>✔ Clotting factor disorders</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
             {/* Process of Blood Donation */}
             <section style={{ ...sectionStyle, backgroundColor: "white" }}>
