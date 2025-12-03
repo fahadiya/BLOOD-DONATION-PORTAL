@@ -10,6 +10,7 @@ const donorSchema = new mongoose.Schema({
     city: { type: String, required: true },
     state: { type: String, required: true },
     address: { type: String, required: true },
+    availability: { type: Boolean, default: true },
 });
 
 

@@ -6,6 +6,8 @@ import ReceiverForm from "./components/receivers/ReceiverForm.jsx";
 // import ReceiverList from "./components/receivers/ReceiverLIst.jsx";
 import DonorStock from "./components/stock/DonorsStock.jsx";
 import HospitalStock from "./components/stock/HospitalStock.jsx";
+// import AdminDashboard from "./components/AdminDashboard.jsx";
+import AdminLogin from "./components/AdminLogin.jsx";
 
 function App() {
   return (
@@ -17,7 +19,8 @@ function App() {
         <Route path="/receiver-register" element={<ReceiverForm />} />
         <Route path="/donor-stock" element={<DonorStock />} />
         <Route path="/hospital-stock" element={<HospitalStock />} />
-
+        {/* <Route path="/admin" element={<AdminDashboard />} /> */}
+        <Route path="/admin-login" element={<AdminLogin />} />
         {/* <Route path="/find-donors" element={<FindDonors />} /> */}
       </Routes>
 

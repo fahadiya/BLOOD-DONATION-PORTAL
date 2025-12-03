@@ -5,7 +5,7 @@ export default function DonorStock() {
     const [donors, setDonors] = useState([]);
     const [stock, setStock] = useState([]);
 
-    // ✅ Fetch all donors
+    // Fetch donors
     useEffect(() => {
         fetch("http://localhost:5000/api/donors")
             .then((res) => res.json())
@@ -13,7 +13,7 @@ export default function DonorStock() {
             .catch((err) => console.error("Error fetching donors:", err));
     }, []);
 
-    // ✅ Fetch blood stock summary
+    // Fetch blood stock
     useEffect(() => {
         fetch("http://localhost:5000/api/donors/stock")
             .then((res) => res.json())
@@ -21,11 +21,16 @@ export default function DonorStock() {
             .catch((err) => console.error("Error fetching stock:", err));
     }, []);
 
+    // ⭐ Open Google Maps for selected city
+    const openCityLocation = (city) => {
+        const url = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(city)}`;
+        window.open(url, "_blank");
+    };
+
     return (
         <div>
             <Header />
             <div style={{ padding: "40px" }}>
-                {/* Title */}
                 <h2
                     style={{
                         color: "#dc2626",
@@ -37,7 +42,7 @@ export default function DonorStock() {
                     🩸 Blood Bank Dashboard
                 </h2>
 
-                {/* 🧩 Blood Stock Table */}
+                {/* Blood Stock Table */}
                 <h3
                     style={{
                         textAlign: "center",
@@ -47,6 +52,7 @@ export default function DonorStock() {
                 >
                     Blood Stock Summary
                 </h3>
+
                 <table
                     style={{
                         width: "60%",
@@ -87,7 +93,7 @@ export default function DonorStock() {
                     </tbody>
                 </table>
 
-                {/* 🧍 Donors List Table */}
+                {/* Donor List Table */}
                 <h3
                     style={{
                         textAlign: "center",
@@ -97,6 +103,7 @@ export default function DonorStock() {
                 >
                     Registered Donors List
                 </h3>
+
                 <table
                     style={{
                         width: "90%",
@@ -116,6 +123,7 @@ export default function DonorStock() {
                             <th style={{ padding: "10px" }}>Phone</th>
                         </tr>
                     </thead>
+
                     <tbody>
                         {donors.length > 0 ? (
                             donors.map((donor, index) => (
@@ -127,10 +135,33 @@ export default function DonorStock() {
                                     }}
                                 >
                                     <td style={{ padding: "10px" }}>{donor.name}</td>
-                                    <td style={{ padding: "10px", fontWeight: "bold", color: "#b91c1c" }}>
+
+                                    <td
+                                        style={{
+                                            padding: "10px",
+                                            fontWeight: "bold",
+                                            color: "#b91c1c",
+                                        }}
+                                    >
                                         {donor.bloodGroup}
                                     </td>
-                                    <td style={{ padding: "10px" }}>{donor.city}</td>
+
+                                    {/* ⭐ Clickable city with hover color change */}
+                                    <td
+                                        onClick={() => openCityLocation(donor.city)}
+                                        style={{
+                                            padding: "10px",
+                                            cursor: "pointer",
+                                            color: "#1d4ed8",
+                                            fontWeight: "500",
+                                            transition: "0.2s",
+                                        }}
+                                        onMouseOver={(e) => (e.target.style.color = "#dc2626")}
+                                        onMouseOut={(e) => (e.target.style.color = "#1d4ed8")}
+                                    >
+                                        {donor.city}
+                                    </td>
+
                                     <td style={{ padding: "10px" }}>{donor.phone}</td>
                                 </tr>
                             ))
