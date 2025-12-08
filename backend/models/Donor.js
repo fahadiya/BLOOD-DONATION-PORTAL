@@ -11,7 +11,7 @@ const donorSchema = new mongoose.Schema({
     state: { type: String, required: true },
     address: { type: String, required: true },
     availability: { type: Boolean, default: true },
-});
+}, { timestamps: true });
 
 
 const Donor = mongoose.model("Donor", donorSchema);

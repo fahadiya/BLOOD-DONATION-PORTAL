@@ -1,14 +1,31 @@
 import express from "express";
-import { addDonor, getDonors, getStock } from "../controllers/donorController.js";
-import Donor from "../models/Donor.js";
-// ✅ Make sure this import exists
+import {
+    addDonor,
+    getDonors,
+    getAvailableDonors,
+    getUnavailableDonors,
+    getStock,
+    updateAvailability, // ✅ import the new function
+} from "../controllers/donorController.js";
 
 const router = express.Router();
 
-// ✅ POST → Add new donor
+// Add a new donor
 router.post("/", addDonor);
+
+// Get donors (all / filtered)
 router.get("/", getDonors);
+
+// Get only available donors
+router.get("/available", getAvailableDonors);
+
+// Get only unavailable donors
+router.get("/not-available", getUnavailableDonors);
+
+// Blood stock summary
 router.get("/stock", getStock);
 
-// ✅ GET → Fetch donors (optionally filter by blood group + city)
+// ✅ Update donor availability
+router.put("/:id/availability", updateAvailability);
+
 export default router;
